@@ -17,6 +17,14 @@
       <button id="time-novosibirsk">Новосибирское время</button>
       <button id="time-vladivostok">Владивостокское время</button>
     </div>
+    <div id="global-time">
+      <button onclick="showTime('Russia')">Время в России</button>
+      <button onclick="showTime('USA')">Время в США</button>
+      <button onclick="showTime('China')">Время в Китае</button>
+      <button onclick="showTime('UK')">Время в Великобритании</button>
+      <button onclick="showTime('India')">Время в Индии</button>
+      <p id="timeDisplay"></p>
+    </div>
     <nav>
       <ul>
         <li><a href="index.html">Главная</a></li>
@@ -24,7 +32,14 @@
         <li><a href="success.html">Истории успеха</a></li>
       </ul>
     </nav>
-    <button id="toggle-theme">Сменить тему</button>
+    <div id="theme-buttons">
+      <button onclick="changeTheme('theme1')">Тема 1</button>
+      <button onclick="changeTheme('theme2')">Тема 2</button>
+      <button onclick="changeTheme('theme3')">Тема 3</button>
+      <button onclick="changeTheme('theme4')">Тема 4</button>
+      <button onclick="changeTheme('theme5')">Тема 5</button>
+    </div>
+    <button id="toggle-theme">Сменить светлую/тёмную тему</button>
   </header>
   <main>
     <section>
