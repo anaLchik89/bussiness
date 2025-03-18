@@ -4,15 +4,17 @@
   --header-background: #222222;
   --button-background: #008cba;
   --button-hover: #005f5f;
+  --section-bg: #ffffff;
 }
 
-/* Тема 1 – тёмная, с холодными оттенками */
+/* Тема 1 – тёмная, холодные оттенки (исправлен для читаемости) */
 [data-theme="theme1"] {
   --background-color: #2c2c2c;
   --text-color: #f0f0f0;
   --header-background: #1a1a1a;
   --button-background: #4a90e2;
   --button-hover: #357abd;
+  --section-bg: #3a3a3a;
 }
 
 /* Тема 2 – классическая светлая */
@@ -22,6 +24,7 @@
   --header-background: #f5f5f5;
   --button-background: #008cba;
   --button-hover: #005f5f;
+  --section-bg: #ffffff;
 }
 
 /* Тема 3 – пастельная голубая гамма */
@@ -31,27 +34,29 @@
   --header-background: #a0c4d3;
   --button-background: #6fa3b8;
   --button-hover: #5a8aa4;
+  --section-bg: #e8f4f8;
 }
 
-/* Тема 4 – тёплая, с бежево-оранжевыми оттенками */
+/* Тема 4 – тёплая, с бежево-оранжевыми оттенками (по умолчанию) */
 [data-theme="theme4"] {
   --background-color: #fff4e6;
   --text-color: #5a4e3d;
   --header-background: #f7d3a7;
   --button-background: #e0a899;
   --button-hover: #c88a76;
+  --section-bg: #fff4e6;
 }
 
-/* Тема 5 – мягкий розово-фиолетовый */
+/* Тема 5 – мягкий розово-фиолетовый (исправлена для контрастности) */
 [data-theme="theme5"] {
   --background-color: #fce4ec;
-  --text-color: #880e4f;
+  --text-color: #5c003a;
   --header-background: #ad1457;
-  --button-background: #e91e63;
+  --button-background: #d81b60;
   --button-hover: #c2185b;
+  --section-bg: #f8d9e3;
 }
 
-/* Остальные стили (не менялись) */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
@@ -61,6 +66,7 @@ body {
   line-height: 1.6;
   transition: background-color 0.3s, color 0.3s;
 }
+
 header {
   background: var(--header-background);
   color: var(--text-color);
@@ -70,19 +76,23 @@ header {
   top: 0;
   z-index: 100;
 }
+
 header h1 {
   margin: 0;
   font-size: 2em;
 }
+
 #time-display,
 #timeDisplay {
   margin-top: 10px;
   font-size: 1.2em;
 }
+
 #time-buttons,
 #global-time {
   margin: 10px 0;
 }
+
 #time-buttons button,
 #global-time button {
   margin: 5px;
@@ -93,27 +103,33 @@ header h1 {
   cursor: pointer;
   border-radius: 4px;
 }
+
 #time-buttons button:hover,
 #global-time button:hover {
   background-color: #777;
 }
+
 nav ul {
   list-style: none;
   padding: 0;
   margin: 10px 0;
 }
+
 nav ul li {
   display: inline;
   margin: 0 10px;
 }
+
 nav a {
   color: var(--text-color);
   text-decoration: none;
   font-weight: bold;
 }
+
 #theme-buttons {
   margin: 10px 0;
 }
+
 #theme-buttons button {
   margin: 5px;
   padding: 8px 12px;
@@ -123,33 +139,30 @@ nav a {
   cursor: pointer;
   border-radius: 4px;
 }
+
 #theme-buttons button:hover {
   background-color: var(--button-hover);
 }
+
+/* Кнопка toggle-theme удалена из HTML, её стили можно удалить или оставить */
 button#toggle-theme {
-  margin-top: 10px;
-  padding: 8px 16px;
-  border: none;
-  background-color: var(--button-background);
-  color: var(--text-color);
-  cursor: pointer;
-  border-radius: 4px;
+  display: none;
 }
-button#toggle-theme:hover {
-  background-color: var(--button-hover);
-}
+
 main {
   max-width: 900px;
   margin: 20px auto;
   padding: 0 15px;
 }
+
 section {
   margin-bottom: 40px;
-  background-color: #fff;
+  background-color: var(--section-bg);
   padding: 20px;
   border-radius: 6px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
 button {
   padding: 10px 15px;
   border: none;
@@ -159,9 +172,11 @@ button {
   border-radius: 4px;
   transition: background-color 0.3s;
 }
+
 button:hover {
   background-color: var(--button-hover);
 }
+
 #scroll-to-top {
   display: none;
   position: fixed;
@@ -173,10 +188,7 @@ button:hover {
   border-radius: 4px;
   cursor: pointer;
 }
-#quiz-options button {
-  margin: 5px;
-}
+
 [data-theme] * {
   transition: background-color 0.3s, color 0.3s;
 }
-
