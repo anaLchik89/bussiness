@@ -1,47 +1,57 @@
 :root {
-  --background-color: #f4f4f4;
-  --text-color: #333;
-  --header-background: #222;
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --header-background: #222222;
   --button-background: #008cba;
   --button-hover: #005f5f;
 }
 
+/* Тема 1 – тёмная, с холодными оттенками */
 [data-theme="theme1"] {
-  --background-color: #1e1e1e;
-  --text-color: #ffffff;
-  --header-background: #333;
-  --button-background: #bb86fc;
-  --button-hover: #9b66c2;
+  --background-color: #2c2c2c;
+  --text-color: #f0f0f0;
+  --header-background: #1a1a1a;
+  --button-background: #4a90e2;
+  --button-hover: #357abd;
 }
+
+/* Тема 2 – классическая светлая */
 [data-theme="theme2"] {
   --background-color: #ffffff;
-  --text-color: #000000;
-  --header-background: #f0f0f0;
-  --button-background: #ff9800;
-  --button-hover: #e68900;
+  --text-color: #333333;
+  --header-background: #f5f5f5;
+  --button-background: #008cba;
+  --button-hover: #005f5f;
 }
+
+/* Тема 3 – пастельная голубая гамма */
 [data-theme="theme3"] {
-  --background-color: #e0f7fa;
-  --text-color: #006064;
-  --header-background: #00796b;
-  --button-background: #009688;
-  --button-hover: #00796b;
+  --background-color: #e8f4f8;
+  --text-color: #34515e;
+  --header-background: #a0c4d3;
+  --button-background: #6fa3b8;
+  --button-hover: #5a8aa4;
 }
+
+/* Тема 4 – тёплая, с бежево-оранжевыми оттенками */
 [data-theme="theme4"] {
-  --background-color: #fff3e0;
-  --text-color: #bf360c;
-  --header-background: #e64a19;
-  --button-background: #ff5722;
-  --button-hover: #e64a19;
+  --background-color: #fff4e6;
+  --text-color: #5a4e3d;
+  --header-background: #f7d3a7;
+  --button-background: #e0a899;
+  --button-hover: #c88a76;
 }
+
+/* Тема 5 – мягкий розово-фиолетовый */
 [data-theme="theme5"] {
   --background-color: #fce4ec;
   --text-color: #880e4f;
   --header-background: #ad1457;
-  --button-background: #d81b60;
+  --button-background: #e91e63;
   --button-hover: #c2185b;
 }
 
+/* Остальные стили (не менялись) */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
@@ -166,9 +176,7 @@ button:hover {
 #quiz-options button {
   margin: 5px;
 }
-.dark-theme {
-  filter: invert(1) hue-rotate(180deg);
-}
 [data-theme] * {
   transition: background-color 0.3s, color 0.3s;
 }
+
