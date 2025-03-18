@@ -10,6 +10,20 @@ document.getElementById("time-kaliningrad").addEventListener("click", () => upda
 document.getElementById("time-yekaterinburg").addEventListener("click", () => updateTimeForZone("Asia/Yekaterinburg", "Екатеринбургское время"));
 document.getElementById("time-novosibirsk").addEventListener("click", () => updateTimeForZone("Asia/Novosibirsk", "Новосибирское время"));
 document.getElementById("time-vladivostok").addEventListener("click", () => updateTimeForZone("Asia/Vladivostok", "Владивостокское время"));
+
+const globalTimeDisplay = document.getElementById("timeDisplay");
+function showTime(region) {
+  const timeZones = {
+    'Russia': 'Europe/Moscow',
+    'USA': 'America/New_York',
+    'China': 'Asia/Shanghai',
+    'UK': 'Europe/London',
+    'India': 'Asia/Kolkata'
+  };
+  const now = new Date().toLocaleTimeString('ru-RU', { timeZone: timeZones[region] });
+  globalTimeDisplay.innerText = `Время в ${region}: ${now}`;
+}
+
 const scrollToTopBtn = document.getElementById("scroll-to-top");
 window.addEventListener("scroll", () => {
   if (window.scrollY > 300) {
@@ -21,68 +35,67 @@ window.addEventListener("scroll", () => {
 scrollToTopBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
 const toggleThemeBtn = document.getElementById("toggle-theme");
 toggleThemeBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark-theme");
 });
+function changeTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+}
+
 const ideaBtn = document.getElementById("generate-idea");
 const ideaOutput = document.getElementById("idea-output");
-const ideas = [
-  "Открыть кофейню с инновационным меню.",
-  "Создать платформу для онлайн-курсов по предпринимательству.",
-  "Разработать мобильное приложение для управления финансами малого бизнеса.",
-  "Запустить сервис доставки здорового питания.",
-  "Создать стартап по аренде электросамокатов.",
-  "Цитата: 'Успех — это умение идти от неудачи к неудаче без потери энтузиазма.' – Уинстон Черчилль",
-  "Цитата: 'Лучший способ предсказать будущее — создать его.' – Питер Друкер"
+const businessIdeas = [
+  "Онлайн-курсы по программированию",
+  "Продажа цифровых товаров",
+  "Магазин экологичной одежды",
+  "Кофейня с уникальной концепцией",
+  "Аренда офисов для фрилансеров",
+  "Создание мобильных приложений",
+  "Ресторан здорового питания",
+  "Автоматизированный онлайн-магазин",
+  "Гаджеты для умного дома",
+  "Персонализированные подарки",
+  "Бизнес на NFT и криптовалюте",
+  "Доставка фермерских продуктов",
+  "Массажный салон на дому",
+  "VR-туризм и экскурсии",
+  "Услуги по автоматизации бизнеса",
+  "Фитнес-программы онлайн",
+  "Обучение детей IT-навыкам",
+  "Разработка игр для мобильных устройств",
+  "Сервис аренды техники",
+  "Социальная платформа для предпринимателей"
 ];
 if (ideaBtn) {
   ideaBtn.addEventListener("click", () => {
-    const randomIdea = ideas[Math.floor(Math.random() * ideas.length)];
+    const randomIdea = businessIdeas[Math.floor(Math.random() * businessIdeas.length)];
     ideaOutput.textContent = randomIdea;
   });
 }
+
 const quizData = [
-  {
-    question: "Какой стиль управления вам ближе?",
-    options: [
-      { text: "Демократический", score: 2 },
-      { text: "Авторитарный", score: 1 },
-      { text: "Либеральный", score: 3 }
-    ]
-  },
-  {
-    question: "Как вы относитесь к риску?",
-    options: [
-      { text: "Люблю риск", score: 1 },
-      { text: "Предпочитаю стабильность", score: 3 },
-      { text: "Балансирую", score: 2 }
-    ]
-  },
-  {
-    question: "Какой масштаб бизнеса вам интересен?",
-    options: [
-      { text: "Местный", score: 3 },
-      { text: "Региональный", score: 2 },
-      { text: "Национальный", score: 1 }
-    ]
-  },
-  {
-    question: "Как вы относитесь к инновациям?",
-    options: [
-      { text: "Внедряю новые технологии", score: 1 },
-      { text: "Склонен к проверенным методам", score: 3 },
-      { text: "Смешанный подход", score: 2 }
-    ]
-  },
-  {
-    question: "Какую роль вы предпочитаете в бизнесе?",
-    options: [
-      { text: "Лидер", score: 1 },
-      { text: "Менеджер", score: 2 },
-      { text: "Консультант", score: 3 }
-    ]
-  }
+  { question: "Какой стиль управления вам ближе?", options: [ { text: "Авторитарный", score: 1 }, { text: "Демократичный", score: 2 }, { text: "Либеральный", score: 3 } ] },
+  { question: "Что важнее в бизнесе?", options: [ { text: "Прибыль", score: 1 }, { text: "Команда", score: 2 }, { text: "Идея", score: 3 } ] },
+  { question: "Какой капитал у вас есть?", options: [ { text: "Менее $1000", score: 3 }, { text: "От $1000 до $10,000", score: 2 }, { text: "Более $10,000", score: 1 } ] },
+  { question: "Какой формат работы вам удобен?", options: [ { text: "Офис", score: 2 }, { text: "Удалёнка", score: 3 }, { text: "Гибрид", score: 1 } ] },
+  { question: "Вы готовы работать 24/7?", options: [ { text: "Да", score: 1 }, { text: "Нет", score: 3 }, { text: "Иногда", score: 2 } ] },
+  { question: "Как вы привлекаете клиентов?", options: [ { text: "Реклама", score: 2 }, { text: "Нетворкинг", score: 3 }, { text: "Контент", score: 1 } ] },
+  { question: "Как относитесь к риску?", options: [ { text: "Люблю рисковать", score: 1 }, { text: "Избегаю рисков", score: 3 }, { text: "Средний уровень", score: 2 } ] },
+  { question: "Какая сфера вам ближе?", options: [ { text: "Технологии", score: 1 }, { text: "Розничная торговля", score: 3 }, { text: "Услуги", score: 2 } ] },
+  { question: "Вы готовы к конкуренции?", options: [ { text: "Да", score: 1 }, { text: "Нет", score: 3 }, { text: "Не знаю", score: 2 } ] },
+  { question: "Какую цель ставите?", options: [ { text: "Финансовая независимость", score: 1 }, { text: "Самореализация", score: 2 }, { text: "Помощь людям", score: 3 } ] },
+  { question: "Какой уровень автоматизации вам нужен?", options: [ { text: "Максимальный", score: 1 }, { text: "Средний", score: 2 }, { text: "Минимальный", score: 3 } ] },
+  { question: "Как относитесь к партнёрству?", options: [ { text: "Люблю работать в команде", score: 1 }, { text: "Только сам", score: 3 }, { text: "Зависит от ситуации", score: 2 } ] },
+  { question: "Вы готовы работать без стабильного дохода?", options: [ { text: "Да", score: 1 }, { text: "Нет", score: 3 }, { text: "Временно", score: 2 } ] },
+  { question: "Как вы выбираете ниши?", options: [ { text: "По трендам", score: 1 }, { text: "По интересу", score: 2 }, { text: "По доходности", score: 3 } ] },
+  { question: "Готовы ли вы обучаться?", options: [ { text: "Да", score: 1 }, { text: "Нет", score: 3 }, { text: "Только по необходимости", score: 2 } ] },
+  { question: "Какой уровень цифровизации вам удобен?", options: [ { text: "Максимальный", score: 1 }, { text: "Средний", score: 2 }, { text: "Минимальный", score: 3 } ] },
+  { question: "Какую стратегию развития выберете?", options: [ { text: "Быстрое масштабирование", score: 1 }, { text: "Стабильный рост", score: 2 }, { text: "Осторожный старт", score: 3 } ] },
+  { question: "Готовы ли вы делегировать задачи?", options: [ { text: "Да", score: 1 }, { text: "Нет", score: 3 }, { text: "Иногда", score: 2 } ] },
+  { question: "Как относитесь к конкуренции?", options: [ { text: "Люблю вызовы", score: 1 }, { text: "Предпочитаю уникальность", score: 2 }, { text: "Главное – качество", score: 3 } ] },
+  { question: "Какой канал продаж вам ближе?", options: [ { text: "Онлайн", score: 1 }, { text: "Офлайн", score: 3 }, { text: "Гибрид", score: 2 } ] }
 ];
 let currentQuestion = 0;
 let quizScore = 0;
@@ -104,8 +117,7 @@ function showQuestion() {
   quizResultEl.textContent = "";
   const currentData = quizData[currentQuestion];
   quizQuestionEl.textContent = currentData.question;
-  quizOptionsEl.
-innerHTML = "";
+  quizOptionsEl.innerHTML = "";
   currentData.options.forEach(option => {
     const btn = document.createElement("button");
     btn.textContent = option.text;
@@ -130,13 +142,14 @@ nextQuestionBtn.addEventListener("click", () => {
 function showResult() {
   quizContainer.style.display = "none";
   let resultText = "";
-  if (quizScore <= 7) {
+  if (quizScore <= 20) {
     resultText = "Ваш стиль ведения бизнеса: инновационный и рискованный!";
-  } else if (quizScore <= 11) {
+  } else if (quizScore <= 35) {
     resultText = "Ваш стиль ведения бизнеса: сбалансированный и гибкий!";
   } else {
     resultText = "Ваш стиль ведения бизнеса: консервативный и продуманный!";
   }
-  quizResultEl.textContent = resultText;
+  quizResultEl.
+textContent = resultText;
   startQuizBtn.style.display = "inline-block";
 }
